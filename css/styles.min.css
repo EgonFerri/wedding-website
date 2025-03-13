@@ -371,7 +371,7 @@ section .header {
 
 .hero {
     min-height: 750px;
-    background: url("../img/hero-min.jpg") center center;
+    background: url("../img/hero.jpg") center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -396,12 +396,12 @@ section .header {
 }
 
 .hero .hero-content {
-    padding-top: 40%
+    padding-top: 25%
 }
 
 .hero .hero-content img {
-    width: 55%;
-    margin-bottom: 12%
+    width: 35%;
+    margin-bottom: 10%
 }
 
 .navigation {
@@ -442,7 +442,7 @@ header .logo {
 }
 
 header .logo img {
-    height: 50px;
+    height: 19px
 }
 
 header ul.primary-nav {
