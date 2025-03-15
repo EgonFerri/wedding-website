@@ -1,5 +1,27 @@
 $(document).ready(function () {
 
+    /***************** Dynamic Engagement Photos Loading ******************/
+    var imageFolder = "img/eng_pics/";
+    var numImages = 6; // Adjust this number to the total images in your folder
+    var gallery = $("#eng-pics-gallery");
+    for (var i = 1; i <= numImages; i++) {
+        // Adjust file naming convention as needed: i-lg.jpg and i-sm.jpg
+        var imgHtml = '<div class="col-md-2">' +
+            '<a class="fancybox" rel="group" href="' + imageFolder + i + '-lg.jpg">' +
+            '<div class="img-wrap">' +
+            '<div class="overlay"><i class="fa fa-search"></i></div>' +
+            '<img src="' + imageFolder + i + '-sm.jpg" alt="Engagement Photo ' + i + '" />' +
+            '</div></a></div>';
+        gallery.append(imgHtml);
+    }
+
+    // If necessary, reinitialize fancybox for the new images:
+    $('.fancybox').fancybox({
+        padding: 4,
+        width: 1000,
+        height: 800
+    });
+
     /***************** Waypoints ******************/
 
     $('.wp1').waypoint(function () {
