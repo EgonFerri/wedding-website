@@ -259,11 +259,7 @@ Hero
   background-size: cover;
   position: relative;
 
-  /*.rsvp-btn {
-    position: absolute;
-    bottom: 100px;
-    left: 50%;
-  }*/
+  /* Other styles for hero... */
   .down-arrow a {
     color: $txt-light;
   }
@@ -284,7 +280,16 @@ Hero
     width: 35%;
     margin-bottom: 10%;
   }
+
+  @media (max-width: 600px) {
+    background: url('../img/eng_pics/1-lg.jpg') center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
 }
+
 .navigation {
   transition: all 300ms ease-in-out;
   position: fixed;
