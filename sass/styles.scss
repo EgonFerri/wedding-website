@@ -932,7 +932,7 @@ Picture Section - emulating video section
   letter-spacing: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   #picture-section {
     height: 250px;  // Adjust height for mobile if needed
   }
