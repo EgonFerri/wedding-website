@@ -1,36 +1,36 @@
-# name: NodeJS with Gulp
+name: NodeJS with Gulp
 
-# on:
-#   push:
-#     branches: [ "master" ]
-#   pull_request:
-#     branches: [ "master" ]
-    
-# permissions:
-#   id-token: write # This is required for requesting the JWT
-#   contents: write # This is required for actions/checkout
+on:
+ push:
+   branches: [ "master" ]
+ pull_request:
+   branches: [ "master" ]
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
+permissions:
+ id-token: write # This is required for requesting the JWT
+ contents: write # This is required for actions/checkout
 
-#     strategy:
-#       matrix:
-#         node-version: [14.x, 16.x, 18.x]
+jobs:
+ build:
+   runs-on: ubuntu-latest
 
-#     steps:
-#     - uses: actions/checkout@v3
+   strategy:
+     matrix:
+       node-version: [14.x, 16.x, 18.x]
 
-#     - name: Use Node.js ${{ matrix.node-version }}
-#       uses: actions/setup-node@v3
-#       with:
-#         node-version: ${{ matrix.node-version }}
+   steps:
+   - uses: actions/checkout@v3
 
-#     - name: Build
-#       run: |
-#         npm install
-#         gulp
-        
-#     - name: Deploy to GitHub Pages
-#       id: deployment
-#       uses: actions/deploy-pages@v1
+   - name: Use Node.js ${{ matrix.node-version }}
+     uses: actions/setup-node@v3
+     with:
+       node-version: ${{ matrix.node-version }}
+
+   - name: Build
+     run: |
+       npm install
+       gulp
+
+   - name: Deploy to GitHub Pages
+     id: deployment
+     uses: actions/deploy-pages@v1
