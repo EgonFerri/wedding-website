@@ -904,3 +904,36 @@ body.modal-open {
 .modal-body {
   padding:25px;
 }
+
+/* ==========================================================================
+Picture Section - emulating video section
+========================================================================== */
+#picture-section {
+  height: 300px;  // Same height as your #video-bg
+  margin-top: 50px;  // Adjust as needed to create space from the previous section
+  background: url('../img/casacoco.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+#picture-section .overlay-text {
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;  // Same padding as #video-content
+  position: relative;
+  background: rgba(17, 17, 17, 0.5);  // Semi-transparent overlay to mimic the video section
+  text-align: center;
+}
+
+#picture-section .overlay-text h5 {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 10px;
+}
+
+@media (max-width: 600px) {
+  #picture-section {
+    height: 250px;  // Adjust height for mobile if needed
+  }
+}
