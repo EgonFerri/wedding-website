@@ -251,8 +251,8 @@ Navigation
 Hero
 ========================================================================== */
 .hero {
-  min-height: 750px;
-  background: url('../img/hero.jpg') center center;
+  min-height: 765px;
+  background: url('../img/main/hero.jpg') center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -282,7 +282,7 @@ Hero
   }
 
   @media (max-width: 600px) {
-    background: url('../img/eng_pics/1-lg.jpg') center center;
+    background: url('../img/main/hero-phone.jpg') center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -469,13 +469,13 @@ Features-stack
   .ipad-wrap {
     width: 706px;
     height: 1002px;
-    background: url("../img/ipad-device.png") no-repeat center center;
+    background: url("../img/main/hero-phone.jpg") no-repeat center center;
     z-index: 1;
   }
   .iphone-wrap {
     width: 304px;
     height: 620px;
-    background: url("../img/iphone6.png") no-repeat center center;
+    background: url("../img/main/hero-phone.jpg") no-repeat center center;
     position: absolute;
     left: 530px;
     bottom: 129px;
@@ -508,7 +508,7 @@ Features-stack
     position: absolute;
     width: 916px;
     height: 540px;
-    background: url("../img/macbook-pro.png") no-repeat center center;
+    background: url("../img/main/hero-phone.jpg") no-repeat center center;
     top: 114px;
     z-index: 4;
     left: 50%;
@@ -520,7 +520,7 @@ Features-stack
 ========================================================================== */
 .hero-strip {
   margin-top: 120px;
-  background: #333844 url("../img/polygonal-bg.jpg") no-repeat center center;
+  background: #333844 url("../img/main/polygonal-bg.jpg") no-repeat center center;
   padding-bottom: 190px;
   position: relative;
 
@@ -911,7 +911,7 @@ Picture Section - emulating video section
 #picture-section {
   height: 300px;  // Same height as your #video-bg
   margin-top: 50px;  // Adjust as needed to create space from the previous section
-  background: url('../img/casacoco.jpg') no-repeat center center;
+  background: url('../img/main/casacoco.jpg') no-repeat center center;
   background-size: cover;
   position: relative;
 }
