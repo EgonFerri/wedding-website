@@ -790,58 +790,74 @@ Google map
 }
 
 /* ==========================================================================
-RSVP form
-========================================================================== */
+   RSVP form
+   ========================================================================== */
 .rsvp {
   padding-bottom: 140px;
+
   .rsvp-form {
+
     .rsvp-btn {
       padding: 15px 0;
       border-radius: 3px;
       width: 100%;
       font-size: 13px;
     }
+
     .form-input-group {
       width: 100%;
       height: 55px;
       margin: 0 auto 10px;
-      -moz-border-radius: 5px;
-      -webkit-border-radius: 5px;
+      border: 1px solid $keyline-color;
       border-radius: 5px;
-      border: solid 1px $keyline-color;
-      text-align: left;
       position: relative;
 
+      /* The icon (e.g., fa-user, fa-cutlery) */
       i {
-        color: $accent-color;
+        color: $accent-color; /* e.g., gold or your accent color */
         font-size: 14px;
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
       }
-      i:after {
+
+      /* Vertical line after icon */
+      i::after {
         content: "";
+        position: absolute;
+        top: 50%;
+        left: 35px;
+        transform: translateY(-50%);
         height: 30px;
         width: 1px;
-        border-right: solid 1px $keyline-color;
-        position: absolute;
-        top: 50%;
-        left: 30px;
-        transform: translateY(-50%);
+        border-right: 1px solid $keyline-color;
       }
-      i.fa-user, i.fa-users, i.fa-envelope, .fa-key {
-        font-size: 14px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        margin-left: 20px;
-      }
-      input {
-        padding-left: 68px;
+
+      /*
+        Apply common styles to BOTH <input> and <select>:
+        - Same left padding so text doesn't overlap the icon.
+        - Remove default outlines, etc.
+      */
+      input,
+      select {
         width: 100%;
         height: 100%;
-        -moz-border-radius: 6px;
-        -webkit-border-radius: 6px;
-        border-radius: 6px;
+        padding-left: 68px;  /* Leaves room for the icon & divider */
         border: none;
+        border-radius: 6px;
+        background: none;
+        outline: none;
+        font-size: 14px;
+        color: $txt-primary;  /* Adjust to your text color variable */
+
+        /* Remove default select arrow styling if you like a consistent look */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
       }
+
+      /* Placeholder styling for inputs. (Select placeholders typically come from an <option> with value="") */
       input::-webkit-input-placeholder {
         color: $form-placeholder;
       }
@@ -857,6 +873,7 @@ RSVP form
     }
   }
 }
+
 
 /* ==========================================================================
 Footer

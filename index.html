@@ -298,12 +298,13 @@
 </section>
 
 <section class="rsvp text-center" id="rsvp">
-
+    <!-- Modal for confirmation -->
     <div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span>&times;</span>
                     </button>
                     <div class="section-padding">
                         <h3>Thank you!</h3>
@@ -311,64 +312,130 @@
                         <div id="add-to-cal"></div>
                     </div>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
+            </div>
+        </div>
+    </div>
+    <!-- RSVP Form -->
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <h3>Cosa stai aspettando?</h3>
-                <p>Conferma la tua presenza entro il 1 Maggio!</p>
-                <form id="rsvp-form" class="rsvp-form"
-                      action=""
-                      method="POST">
+                <h3>RSVP Now</h3>
+                <p>Please confirm your attendance and let us know your meal preferences.</p>
+                <form id="rsvp-form" class="rsvp-form" action="" method="POST">
+                    <!-- Your Details -->
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-envelope"></i><input type="email" name="email" class=""
-                                                                     placeholder="Your email"
-                                                                     required>
+                                <i class="fa fa-user"></i>
+                                <input type="text" name="your_name" placeholder="Il tuo nome" required>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-user"></i><input name="name" class=""
-                                                                 placeholder="Your name"
-                                                                 required>
+                                <i class="fa fa-cutlery"></i>
+                                <select name="your_food_pref" required>
+                                    <option value="">Cosa mangi</option>
+                                    <option value="omnivore">Onnivoro</option>
+                                    <option value="vegan">Vegano</option>
+                                    <option value="vegetarian">Vegetariano</option>
+                                    <option value="celiac">Celiaco</option>
+                                    <option value="no dairy">No lattosio</option>
+                                </select>
                             </div>
                         </div>
                     </div>
+                    <!-- Partner Details -->
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-users"></i><input type="number" name="extras" class="" min="0"
-                                                                  max="4"
-                                                                  placeholder="Husband/Wife or kids"
-                                                                  required>
+                                <i class="fa fa-heart"></i>
+                                <input type="text" name="partner_name" placeholder="Il tuo partner">
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-key"></i><input type="number" name="invite_code" id="invite_code"
-                                                                class="" min="0"
-                                                                placeholder="Invite code"
-                                                                required>
+                                <i class="fa fa-cutlery"></i>
+                                <select name="partner_food_pref">
+                                    <option value="omnivore">Cosa mangia</option>
+                                    <option value="omnivore">Onnivoro</option>
+                                    <option value="vegan">Vegano</option>
+                                    <option value="vegetarian">Vegetariano</option>
+                                    <option value="celiac">Celiaco</option>
+                                    <option value="no dairy">No lattosio</option>
+                                </select>
                             </div>
                         </div>
                     </div>
+                    <!-- Kids Details -->
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-child"></i>
+                                <input type="number" name="num_kids" placeholder="Bambini (<10)" min="0" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-cutlery"></i>
+                                <select name="kids_food_pref">
+                                    <option value="omnivore">Cosa mangiano</option>
+                                    <option value="omnivore">Onnivoro</option>
+                                    <option value="vegan">Vegano</option>
+                                    <option value="vegetarian">Vegetariano</option>
+                                    <option value="celiac">Celiaco</option>
+                                    <option value="no dairy">No lattosio</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Teens Details -->
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-users"></i>
+                                <input type="number" name="num_teens" placeholder="Ragazzi (>10)" min="0" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-cutlery"></i>
+                                <select name="teens_food_pref">
+                                    <option value="omnivore">Cosa mangiano</option>
+                                    <option value="omnivore">Onnivoro</option>
+                                    <option value="vegan">Vegano</option>
+                                    <option value="vegetarian">Vegetariano</option>
+                                    <option value="celiac">Celiaco</option>
+                                    <option value="no dairy">No lattosio</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Email & Code -->
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-envelope"></i>
+                                <input type="email" name="email" placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-key"></i>
+                                <input type="text" name="invite_code" id="invite_code" placeholder="Invitation Code" required>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Alert Area -->
                     <div class="row">
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
-                    <button class="btn-fill rsvp-btn">
-                        Yes,
-                        that's me!
-                    </button>
+                    <button class="btn-fill rsvp-btn" type="submit">Submit RSVP</button>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
 
 <footer>
     <div class="container">
