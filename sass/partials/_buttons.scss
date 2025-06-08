@@ -1,6 +1,6 @@
 // Buttons partial
 
-@import "partials/colors";
+@use "partials/colors" as *;
 
 .btn {
 	font-size: 13px;

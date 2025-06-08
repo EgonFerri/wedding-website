@@ -1,5 +1,7 @@
 // Layout variables partial
 
+@use "partials/colors" as *;
+
 $section-padding: 40px 0;
 
 section.intro, section.features-extra, section.rsvp {
