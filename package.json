@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "A wedding website with loads of features.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,10 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^6.0.1",
     "gulp-uglify": "^3.0.2",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^30.0.0-beta.3",
+    "jquery": "^3.7.1",
+    "jsdom": "^26.1.0",
     "sass": "^1.89.1"
   },
   "dependencies": {
