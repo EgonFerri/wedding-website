@@ -8,7 +8,7 @@ var rename = require('gulp-rename');
 // compile scss to css
 gulp.task('sass', function () {
     return gulp.src('./sass/styles.scss')
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass({style: 'compressed'}).on('error', sass.logError))
         .pipe(rename({basename: 'styles.min'}))
         .pipe(gulp.dest('./css'));
 });
