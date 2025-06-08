@@ -15,7 +15,7 @@ gulp.task('sass', function () {
 
 // watch changes in scss files and run sass task
 gulp.task('sass:watch', function () {
-    gulp.watch('./sass/**/*.scss', ['sass']);
+    gulp.watch('./sass/**/*.scss', gulp.series('sass'));
 });
 
 // minify js
