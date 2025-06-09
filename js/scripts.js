@@ -2,7 +2,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const gallery = document.getElementById('eng-pics-gallery');
-  if (gallery) loadEngagementPhotos(gallery);
+  if (gallery) {
+    loadEngagementPhotos(gallery);
+    setupGalleryLightbox(gallery);
+  }
 
   const navToggleBtn = document.querySelector('.nav-toggle');
   if (navToggleBtn) {
@@ -31,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupAnimations();
   setupShareButtons();
+  setupVideoBackground();
 
   const myCalendar = createCalendar({
     options: { class: '', id: '' },
@@ -51,6 +55,23 @@ function loadEngagementPhotos(gallery, imageFolder = 'img/eng_pics/', numImages 
     const html = `<div class="col-md-2"><a href="${imageFolder}${i}-lg.jpg"><div class="img-wrap"><div class="overlay"><i class="fa fa-search"></i></div><img src="${imageFolder}${i}-sm.jpg" alt="Engagement Photo ${i}" /></div></a></div>`;
     gallery.insertAdjacentHTML('beforeend', html);
   }
+}
+
+function setupGalleryLightbox(gallery) {
+  gallery.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (!link) return;
+    e.preventDefault();
+    openLightbox(link.href);
+  });
+}
+
+function openLightbox(src) {
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay';
+  overlay.innerHTML = `<img src="${src}" alt="">`;
+  overlay.addEventListener('click', () => document.body.removeChild(overlay));
+  document.body.appendChild(overlay);
 }
 
 function navToggle() {
@@ -104,6 +125,33 @@ function setupShareButtons() {
       '<div class="g-plusone" data-size="medium"></div>';
     shareBar[i].innerHTML = html;
     shareBar[i].style.display = 'inline-block';
+  }
+}
+
+function setupVideoBackground() {
+  const player = document.getElementById('bgndVideo');
+  if (!player) return;
+  const raw = player.getAttribute('data-property');
+  if (!raw) return;
+  try {
+    const obj = JSON.parse(raw.replace(/'/g, '"'));
+    const base = obj.videoURL.replace('https://youtu.be/', 'https://www.youtube.com/embed/');
+    const params = new URLSearchParams({
+      autoplay: obj.autoPlay ? 1 : 0,
+      mute: obj.mute ? 1 : 0,
+      controls: obj.showControls ? 1 : 0,
+      start: obj.startAt || 0,
+    });
+    const iframe = document.createElement('iframe');
+    iframe.src = base + '?' + params.toString();
+    iframe.setAttribute('allow', 'autoplay; fullscreen');
+    iframe.setAttribute('frameborder', '0');
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    player.innerHTML = '';
+    player.appendChild(iframe);
+  } catch (e) {
+    console.error('Video background error', e);
   }
 }
 
