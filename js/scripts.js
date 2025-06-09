@@ -58,19 +58,60 @@ function loadEngagementPhotos(gallery, imageFolder = 'img/eng_pics/', numImages 
 }
 
 function setupGalleryLightbox(gallery) {
+  const links = Array.from(gallery.querySelectorAll('a'));
+  const images = links.map(l => l.href);
+  links.forEach((link, idx) => {
+    link.dataset.index = idx;
+  });
   gallery.addEventListener('click', (e) => {
     const link = e.target.closest('a');
     if (!link) return;
     e.preventDefault();
-    openLightbox(link.href);
+    openLightbox(images, Number(link.dataset.index));
   });
 }
 
-function openLightbox(src) {
+function openLightbox(images, startIndex) {
+  let index = startIndex;
   const overlay = document.createElement('div');
   overlay.className = 'lightbox-overlay';
-  overlay.innerHTML = `<img src="${src}" alt="">`;
-  overlay.addEventListener('click', () => document.body.removeChild(overlay));
+  overlay.innerHTML = `
+    <span class="close">&times;</span>
+    <span class="nav prev">&#10094;</span>
+    <img src="" alt="">
+    <span class="nav next">&#10095;</span>`;
+
+  const img = overlay.querySelector('img');
+  const closeBtn = overlay.querySelector('.close');
+  const prevBtn = overlay.querySelector('.prev');
+  const nextBtn = overlay.querySelector('.next');
+
+  const show = (i, dir) => {
+    index = (i + images.length) % images.length;
+    img.classList.remove('slide-in-left', 'slide-in-right');
+    void img.offsetWidth;
+    img.src = images[index];
+    if (dir) img.classList.add(dir === 'next' ? 'slide-in-right' : 'slide-in-left');
+  };
+
+  const remove = () => {
+    document.removeEventListener('keydown', keyHandler);
+    document.body.removeChild(overlay);
+  };
+
+  function keyHandler(e) {
+    if (e.key === 'Escape') remove();
+    else if (e.key === 'ArrowRight') nextBtn.click();
+    else if (e.key === 'ArrowLeft') prevBtn.click();
+  }
+
+  closeBtn.addEventListener('click', remove);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) remove(); });
+  prevBtn.addEventListener('click', (e) => { e.stopPropagation(); show(index - 1, 'prev'); });
+  nextBtn.addEventListener('click', (e) => { e.stopPropagation(); show(index + 1, 'next'); });
+  document.addEventListener('keydown', keyHandler);
+
+  show(index);
   document.body.appendChild(overlay);
 }
 
@@ -135,12 +176,19 @@ function setupVideoBackground() {
   if (!raw) return;
   try {
     const obj = JSON.parse(raw.replace(/'/g, '"'));
-    const base = obj.videoURL.replace('https://youtu.be/', 'https://www.youtube.com/embed/');
+    const id = obj.videoURL.split('/').pop();
+    const base = 'https://www.youtube.com/embed/' + id;
     const params = new URLSearchParams({
       autoplay: obj.autoPlay ? 1 : 0,
       mute: obj.mute ? 1 : 0,
       controls: obj.showControls ? 1 : 0,
       start: obj.startAt || 0,
+      end: obj.stopAt || '',
+      loop: 1,
+      playlist: id,
+      modestbranding: 1,
+      playsinline: 1,
+      enablejsapi: 1
     });
     const iframe = document.createElement('iframe');
     iframe.src = base + '?' + params.toString();
@@ -148,6 +196,9 @@ function setupVideoBackground() {
     iframe.setAttribute('frameborder', '0');
     iframe.style.width = '100%';
     iframe.style.height = '100%';
+    iframe.style.position = 'absolute';
+    iframe.style.top = '0';
+    iframe.style.left = '0';
     player.innerHTML = '';
     player.appendChild(iframe);
   } catch (e) {
