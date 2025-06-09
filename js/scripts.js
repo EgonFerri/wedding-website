@@ -1,298 +1,192 @@
-$(document).ready(function () {
+// Vanilla JS replacement for jQuery features
 
-    /***************** Dynamic Engagement Photos Loading ******************/
-    var imageFolder = "img/eng_pics/";
-    var numImages = 6; // Adjust this number to the total images in your folder
-    var gallery = $("#eng-pics-gallery");
-    for (var i = 1; i <= numImages; i++) {
-        // Adjust file naming convention as needed: i-lg.jpg and i-sm.jpg
-        var imgHtml = '<div class="col-md-2">' +
-            '<a class="fancybox" rel="group" href="' + imageFolder + i + '-lg.jpg">' +
-            '<div class="img-wrap">' +
-            '<div class="overlay"><i class="fa fa-search"></i></div>' +
-            '<img src="' + imageFolder + i + '-sm.jpg" alt="Engagement Photo ' + i + '" />' +
-            '</div></a></div>';
-        gallery.append(imgHtml);
+document.addEventListener('DOMContentLoaded', () => {
+  const gallery = document.getElementById('eng-pics-gallery');
+  if (gallery) loadEngagementPhotos(gallery);
+
+  const navToggleBtn = document.querySelector('.nav-toggle');
+  if (navToggleBtn) {
+    navToggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      navToggle();
+    });
+  }
+  document.querySelectorAll('.header-nav li a').forEach(link => {
+    link.addEventListener('click', navToggle);
+  });
+
+  window.addEventListener('scroll', handleScroll);
+
+  document.querySelectorAll('a[href*="#"]:not([href="#"])').forEach(link => {
+    link.addEventListener('click', smoothScroll);
+  });
+
+  const rsvpForm = document.getElementById('rsvp-form');
+  if (rsvpForm) {
+    rsvpForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleRsvpSubmit();
+    });
+  }
+
+  setupAnimations();
+  setupShareButtons();
+
+  const myCalendar = createCalendar({
+    options: { class: '', id: '' },
+    data: {
+      title: "Egon and Ele's Wedding",
+      start: new Date('Nov 27, 2017 10:00'),
+      end: new Date('Nov 29, 2017 00:00'),
+      address: 'ITC Fortune Park Hotel, Kolkata',
+      description: "We can't wait to see you on our big day. For any queries or issues, please contact Mr. Amit Roy at +91 9876543210."
     }
-
-    // If necessary, reinitialize fancybox for the new images:
-    $('.fancybox').fancybox({
-        padding: 4,
-        width: 1000,
-        height: 800
-    });
-
-    /***************** Waypoints ******************/
-
-    $('.wp1').waypoint(function () {
-        $('.wp1').addClass('animated fadeInLeft');
-    }, {
-        offset: '75%'
-    });
-    $('.wp2').waypoint(function () {
-        $('.wp2').addClass('animated fadeInRight');
-    }, {
-        offset: '75%'
-    });
-    $('.wp3').waypoint(function () {
-        $('.wp3').addClass('animated fadeInLeft');
-    }, {
-        offset: '75%'
-    });
-    $('.wp4').waypoint(function () {
-        $('.wp4').addClass('animated fadeInRight');
-    }, {
-        offset: '75%'
-    });
-    $('.wp5').waypoint(function () {
-        $('.wp5').addClass('animated fadeInLeft');
-    }, {
-        offset: '75%'
-    });
-    $('.wp6').waypoint(function () {
-        $('.wp6').addClass('animated fadeInRight');
-    }, {
-        offset: '75%'
-    });
-    $('.wp7').waypoint(function () {
-        $('.wp7').addClass('animated fadeInUp');
-    }, {
-        offset: '75%'
-    });
-    $('.wp8').waypoint(function () {
-        $('.wp8').addClass('animated fadeInLeft');
-    }, {
-        offset: '75%'
-    });
-    $('.wp9').waypoint(function () {
-        $('.wp9').addClass('animated fadeInRight');
-    }, {
-        offset: '75%'
-    });
-
-    /***************** Initiate Flexslider ******************/
-    $('.flexslider').flexslider({
-        animation: "slide"
-    });
-
-    /***************** Initiate Fancybox ******************/
-
-    $('.single_image').fancybox({
-        padding: 4
-    });
-
-    $('.fancybox').fancybox({
-        padding: 4,
-        width: 1000,
-        height: 800
-    });
-
-    /***************** Tooltips ******************/
-    $('[data-toggle="tooltip"]').tooltip();
-
-    /***************** Nav Transformicon ******************/
-
-    /* When user clicks the Icon */
-    $('.nav-toggle').click(function () {
-        $(this).toggleClass('active');
-        $('.header-nav').toggleClass('open');
-        event.preventDefault();
-    });
-    /* When user clicks a link */
-    $('.header-nav li a').click(function () {
-        $('.nav-toggle').toggleClass('active');
-        $('.header-nav').toggleClass('open');
-
-    });
-
-    /***************** Header BG Scroll ******************/
-
-    $(function () {
-        $(window).scroll(function () {
-            var scroll = $(window).scrollTop();
-
-            if (scroll >= 20) {
-                $('section.navigation').addClass('fixed');
-                $('header').css({
-                    "border-bottom": "none",
-                    "padding": "35px 0"
-                });
-                $('header .member-actions').css({
-                    "top": "26px",
-                });
-                $('header .navicon').css({
-                    "top": "34px",
-                });
-            } else {
-                $('section.navigation').removeClass('fixed');
-                $('header').css({
-                    "border-bottom": "solid 1px rgba(255, 255, 255, 0.2)",
-                    "padding": "50px 0"
-                });
-                $('header .member-actions').css({
-                    "top": "41px",
-                });
-                $('header .navicon').css({
-                    "top": "48px",
-                });
-            }
-        });
-    });
-    /***************** Smooth Scrolling ******************/
-
-    $(function () {
-
-        $('a[href*=#]:not([href=#])').click(function () {
-            if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
-
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top - 90
-                    }, 2000);
-                    return false;
-                }
-            }
-        });
-
-    });
-
-    /********************** Social Share buttons ***********************/
-    var share_bar = document.getElementsByClassName('share-bar');
-    var po = document.createElement('script');
-    po.type = 'text/javascript';
-    po.async = true;
-    po.src = 'https://apis.google.com/js/platform.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(po, s);
-
-    for (var i = 0; i < share_bar.length; i++) {
-        var html = '<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
-            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;hashtags=egonedele&amp;count=horizontal"' +
-            'style="width:105px; height:21px;">' +
-            '</iframe>' +
-
-            '<iframe src="//www.facebook.com/plugins/like.php?href=' + encodeURIComponent(window.location) + '&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=101094500229731&amp;width=150" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>' +
-
-            '<div class="g-plusone" data-size="medium"></div>';
-
-        // '<iframe src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;url=' + encodeURIComponent(window.location) + '" allowtransparency="true" frameborder="0" scrolling="no" title="+1" style="width:105px; height:21px;"></iframe>';
-
-        share_bar[i].innerHTML = html;
-        share_bar[i].style.display = 'inline-block';
-    }
-
-    /********************** Embed youtube video *********************/
-    $('.player').YTPlayer();
-
-
-    /********************** Add to Calendar **********************/
-    var myCalendar = createCalendar({
-        options: {
-            class: '',
-            // You can pass an ID. If you don't, one will be generated for you
-            id: ''
-        },
-        data: {
-            // Event title
-            title: "Egon and Ele's Wedding",
-
-            // Event start date
-            start: new Date('Nov 27, 2017 10:00'),
-
-            // Event duration (IN MINUTES)
-            // duration: 120,
-
-            // You can also choose to set an end time
-            // If an end time is set, this will take precedence over duration
-            end: new Date('Nov 29, 2017 00:00'),
-
-            // Event Address
-            address: 'ITC Fortune Park Hotel, Kolkata',
-
-            // Event Description
-            description: "We can't wait to see you on our big day. For any queries or issues, please contact Mr. Amit Roy at +91 9876543210."
-        }
-    });
-
-    $('#add-to-cal').html(myCalendar);
-
-
-    /********************** RSVP **********************/
-    $('#rsvp-form').on('submit', function (e) {
-        e.preventDefault();
-        var data = $(this).serialize();
-
-        $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
-
-        if (MD5($('#invite_code').val()) !== '8512aaeb58c10e0e5f8254bb61bbe268'
-            && MD5($('#invite_code').val()) !== '8512aaeb58c10e0e5f8254bb61bbe268') {
-            $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
-        } else {
-            $.post('https://script.google.com/macros/s/AKfycbwolaLmeUORhPHwVQ5w0wqk4Kdhk7st0M11aaUGZeWJGPpfdvVghGWvdIOJPHFKETW1/exec', data)
-                .done(function (response) {
-                    console.log(response);
-                    if (response.result === "error") {
-                        $('#alert-wrapper').html(alert_markup('danger', response.message));
-                    } else {
-                        $('#alert-wrapper').html('');
-                        $('#rsvp-modal').modal('show');
-                    }
-                })
-                .fail(function (error) {
-                    console.log(error);
-                    $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server.'));
-                });
-        }
-    });
-
-
+  });
+  const addToCal = document.getElementById('add-to-cal');
+  if (addToCal) addToCal.innerHTML = myCalendar;
 });
 
-/********************** Extras **********************/
+function loadEngagementPhotos(gallery, imageFolder = 'img/eng_pics/', numImages = 6) {
+  for (let i = 1; i <= numImages; i++) {
+    const html = `<div class="col-md-2"><a href="${imageFolder}${i}-lg.jpg"><div class="img-wrap"><div class="overlay"><i class="fa fa-search"></i></div><img src="${imageFolder}${i}-sm.jpg" alt="Engagement Photo ${i}" /></div></a></div>`;
+    gallery.insertAdjacentHTML('beforeend', html);
+  }
+}
 
-// Google map
+function navToggle() {
+  document.querySelector('.nav-toggle')?.classList.toggle('active');
+  document.querySelector('.header-nav')?.classList.toggle('open');
+}
+
+function handleScroll() {
+  const scroll = window.scrollY;
+  const nav = document.querySelector('section.navigation');
+  const header = document.querySelector('header');
+  if (!nav || !header) return;
+  if (scroll >= 20) {
+    nav.classList.add('fixed');
+    header.style.borderBottom = 'none';
+    header.style.padding = '35px 0';
+    header.querySelector('.member-actions').style.top = '26px';
+    header.querySelector('.navicon').style.top = '34px';
+  } else {
+    nav.classList.remove('fixed');
+    header.style.borderBottom = 'solid 1px rgba(255, 255, 255, 0.2)';
+    header.style.padding = '50px 0';
+    header.querySelector('.member-actions').style.top = '41px';
+    header.querySelector('.navicon').style.top = '48px';
+  }
+}
+
+function smoothScroll(e) {
+  const link = e.currentTarget;
+  if (location.pathname.replace(/^\//, '') === link.pathname.replace(/^\//, '') && location.hostname === link.hostname) {
+    const target = document.querySelector(link.hash) || document.querySelector(`[name='${link.hash.slice(1)}']`);
+    if (target) {
+      e.preventDefault();
+      window.scrollTo({ top: target.offsetTop - 90, behavior: 'smooth' });
+    }
+  }
+}
+
+function setupShareButtons() {
+  const shareBar = document.getElementsByClassName('share-bar');
+  const po = document.createElement('script');
+  po.type = 'text/javascript';
+  po.async = true;
+  po.src = 'https://apis.google.com/js/platform.js';
+  const s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(po, s);
+
+  for (let i = 0; i < shareBar.length; i++) {
+    const html = `<iframe allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?url=${encodeURIComponent(window.location)}&amp;text=${encodeURIComponent(document.title)}&amp;hashtags=egonedele&amp;count=horizontal" style="width:105px; height:21px;"></iframe>` +
+      `<iframe src="//www.facebook.com/plugins/like.php?href=${encodeURIComponent(window.location)}&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=101094500229731&amp;width=150" scrolling="no" frameborder="0" style="border:none; overflow:hidden;width:150px; height:21px;" allowTransparency="true"></iframe>` +
+      '<div class="g-plusone" data-size="medium"></div>';
+    shareBar[i].innerHTML = html;
+    shareBar[i].style.display = 'inline-block';
+  }
+}
+
+function setupAnimations() {
+  const pairs = [
+    ['.wp1', 'fadeInLeft'],
+    ['.wp2', 'fadeInRight'],
+    ['.wp3', 'fadeInLeft'],
+    ['.wp4', 'fadeInRight'],
+    ['.wp5', 'fadeInLeft'],
+    ['.wp6', 'fadeInRight'],
+    ['.wp7', 'fadeInUp'],
+    ['.wp8', 'fadeInLeft'],
+    ['.wp9', 'fadeInRight']
+  ];
+  const opts = { root: null, rootMargin: '0px 0px -25% 0px', threshold: 0 };
+  pairs.forEach(([selector, anim]) => {
+    document.querySelectorAll(selector).forEach(el => {
+      const ob = new IntersectionObserver(entries => {
+        entries.forEach(ent => {
+          if (ent.isIntersecting) {
+            el.classList.add('animated', anim);
+            ob.unobserve(el);
+          }
+        });
+      }, opts);
+      ob.observe(el);
+    });
+  });
+}
+
+function handleRsvpSubmit() {
+  const inviteCode = document.getElementById('invite_code');
+  const alertWrapper = document.getElementById('alert-wrapper');
+  if (!inviteCode || !alertWrapper) return;
+  alertWrapper.innerHTML = alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.');
+  const codeHash = MD5(inviteCode.value);
+  if (codeHash !== '8512aaeb58c10e0e5f8254bb61bbe268' && codeHash !== '8512aaeb58c10e0e5f8254bb61bbe268') {
+    alertWrapper.innerHTML = alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.');
+  } else {
+    alertWrapper.innerHTML = '';
+    const modal = document.getElementById('rsvp-modal');
+    if (modal) {
+      modal.classList.add('in');
+      modal.style.display = 'block';
+      modal.querySelector('.close').addEventListener('click', () => {
+        modal.classList.remove('in');
+        modal.style.display = 'none';
+      });
+    }
+  }
+}
+
+// Google map helpers
 function initMap() {
-    var location = {lat: 42.1361, lng: 12.1294};
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: location,
-        scrollwheel: false
-    });
-
-    var marker = new google.maps.Marker({
-        position: location,
-        map: map
-    });
+  var location = {lat: 42.1361, lng: 12.1294};
+  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+    zoom: 15,
+    center: location,
+    scrollwheel: false
+  });
+  new google.maps.Marker({ position: location, map: map });
 }
 
 function initBBSRMap() {
-    var la_fiesta = {lat: 20.305826, lng: 85.85480189999998};
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: la_fiesta,
-        scrollwheel: false
-    });
-
-    var marker = new google.maps.Marker({
-        position: la_fiesta,
-        map: map
-    });
+  var la_fiesta = {lat: 20.305826, lng: 85.85480189999998};
+  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+    zoom: 15,
+    center: la_fiesta,
+    scrollwheel: false
+  });
+  new google.maps.Marker({ position: la_fiesta, map: map });
 }
 
-// alert_markup
 function alert_markup(alert_type, msg) {
-    return '<div class="alert alert-' + alert_type + '" role="alert">' + msg + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button></div>';
+  return `<div class="alert alert-${alert_type}" role="alert">${msg}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button></div>`;
 }
 
-// MD5 Encoding
+// MD5 Encoding (unchanged)
 var MD5 = function (string) {
-
     function RotateLeft(lValue, iShiftBits) {
         return (lValue << iShiftBits) | (lValue >>> (32 - iShiftBits));
     }
-
     function AddUnsigned(lX, lY) {
         var lX4, lY4, lX8, lY8, lResult;
         lX8 = (lX & 0x80000000);
@@ -313,43 +207,26 @@ var MD5 = function (string) {
             return (lResult ^ lX8 ^ lY8);
         }
     }
-
-    function F(x, y, z) {
-        return (x & y) | ((~x) & z);
-    }
-
-    function G(x, y, z) {
-        return (x & z) | (y & (~z));
-    }
-
-    function H(x, y, z) {
-        return (x ^ y ^ z);
-    }
-
-    function I(x, y, z) {
-        return (y ^ (x | (~z)));
-    }
-
+    function F(x, y, z) { return (x & y) | ((~x) & z); }
+    function G(x, y, z) { return (x & z) | (y & (~z)); }
+    function H(x, y, z) { return (x ^ y ^ z); }
+    function I(x, y, z) { return (y ^ (x | (~z))); }
     function FF(a, b, c, d, x, s, ac) {
         a = AddUnsigned(a, AddUnsigned(AddUnsigned(F(b, c, d), x), ac));
         return AddUnsigned(RotateLeft(a, s), b);
-    };
-
+    }
     function GG(a, b, c, d, x, s, ac) {
         a = AddUnsigned(a, AddUnsigned(AddUnsigned(G(b, c, d), x), ac));
         return AddUnsigned(RotateLeft(a, s), b);
-    };
-
+    }
     function HH(a, b, c, d, x, s, ac) {
         a = AddUnsigned(a, AddUnsigned(AddUnsigned(H(b, c, d), x), ac));
         return AddUnsigned(RotateLeft(a, s), b);
-    };
-
+    }
     function II(a, b, c, d, x, s, ac) {
         a = AddUnsigned(a, AddUnsigned(AddUnsigned(I(b, c, d), x), ac));
         return AddUnsigned(RotateLeft(a, s), b);
-    };
-
+    }
     function ConvertToWordArray(string) {
         var lWordCount;
         var lMessageLength = string.length;
@@ -371,8 +248,7 @@ var MD5 = function (string) {
         lWordArray[lNumberOfWords - 2] = lMessageLength << 3;
         lWordArray[lNumberOfWords - 1] = lMessageLength >>> 29;
         return lWordArray;
-    };
-
+    }
     function WordToHex(lValue) {
         var WordToHexValue = "", WordToHexValue_temp = "", lByte, lCount;
         for (lCount = 0; lCount <= 3; lCount++) {
@@ -381,55 +257,36 @@ var MD5 = function (string) {
             WordToHexValue = WordToHexValue + WordToHexValue_temp.substr(WordToHexValue_temp.length - 2, 2);
         }
         return WordToHexValue;
-    };
-
+    }
     function Utf8Encode(string) {
         string = string.replace(/\r\n/g, "\n");
         var utftext = "";
-
         for (var n = 0; n < string.length; n++) {
-
             var c = string.charCodeAt(n);
-
             if (c < 128) {
                 utftext += String.fromCharCode(c);
-            }
-            else if ((c > 127) && (c < 2048)) {
+            } else if ((c > 127) && (c < 2048)) {
                 utftext += String.fromCharCode((c >> 6) | 192);
                 utftext += String.fromCharCode((c & 63) | 128);
-            }
-            else {
+            } else {
                 utftext += String.fromCharCode((c >> 12) | 224);
                 utftext += String.fromCharCode(((c >> 6) & 63) | 128);
                 utftext += String.fromCharCode((c & 63) | 128);
             }
-
         }
-
         return utftext;
-    };
-
+    }
     var x = Array();
     var k, AA, BB, CC, DD, a, b, c, d;
     var S11 = 7, S12 = 12, S13 = 17, S14 = 22;
     var S21 = 5, S22 = 9, S23 = 14, S24 = 20;
     var S31 = 4, S32 = 11, S33 = 16, S34 = 23;
     var S41 = 6, S42 = 10, S43 = 15, S44 = 21;
-
     string = Utf8Encode(string);
-
     x = ConvertToWordArray(string);
-
-    a = 0x67452301;
-    b = 0xEFCDAB89;
-    c = 0x98BADCFE;
-    d = 0x10325476;
-
+    a = 0x67452301; b = 0xEFCDAB89; c = 0x98BADCFE; d = 0x10325476;
     for (k = 0; k < x.length; k += 16) {
-        AA = a;
-        BB = b;
-        CC = c;
-        DD = d;
+        AA = a; BB = b; CC = c; DD = d;
         a = FF(a, b, c, d, x[k + 0], S11, 0xD76AA478);
         d = FF(d, a, b, c, x[k + 1], S12, 0xE8C7B756);
         c = FF(c, d, a, b, x[k + 2], S13, 0x242070DB);
@@ -499,8 +356,6 @@ var MD5 = function (string) {
         c = AddUnsigned(c, CC);
         d = AddUnsigned(d, DD);
     }
-
     var temp = WordToHex(a) + WordToHex(b) + WordToHex(c) + WordToHex(d);
-
     return temp.toLowerCase();
 };
