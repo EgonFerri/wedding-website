@@ -784,6 +784,81 @@ Google map
   height: 500px;
   width: 100%;
 }
+
+.custom-map-marker {
+  --marker-color: $accent-color;
+  --marker-bg: rgba(255, 255, 255, 0.96);
+  --marker-subtitle-color: $txt-secondary;
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 18px;
+  border-radius: 24px;
+  border: 2px solid var(--marker-color);
+  background: var(--marker-bg);
+  color: var(--marker-color);
+  font-family: $sans-serif;
+  text-align: center;
+  box-shadow: 0 16px 32px rgba(28, 54, 83, 0.18);
+  transform-origin: 50% 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: auto;
+  user-select: none;
+}
+
+.custom-map-marker::before,
+.custom-map-marker::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  border-color: transparent;
+  border-width: 12px 10px 0 10px;
+}
+
+.custom-map-marker::before {
+  bottom: -14px;
+  border-top-color: var(--marker-color);
+}
+
+.custom-map-marker::after {
+  bottom: -12px;
+  border-top-color: var(--marker-bg);
+}
+
+.custom-map-marker:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(28, 54, 83, 0.22);
+}
+
+.custom-map-marker__title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--marker-color);
+}
+
+.custom-map-marker__subtitle {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--marker-subtitle-color);
+}
+
+.custom-map-marker.marker-church {
+  --marker-color: lighten($txt-secondary, 15%);
+  --marker-subtitle-color: $txt-secondary;
+}
+
+.custom-map-marker.marker-reception {
+  --marker-color: $accent-color;
+  --marker-subtitle-color: darken($accent-color, 22%);
+}
+
 #map-content-wrapper {
   position: relative;
   margin-top: -502px;

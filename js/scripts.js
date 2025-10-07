@@ -242,6 +242,27 @@ function addMarker(map, position, markerOptions) {
         });
 }
 
+function createMarkerContent(title, subtitle, variant) {
+    var container = document.createElement('div');
+    container.className = 'custom-map-marker' + (variant ? ' ' + variant : '');
+
+    if (title) {
+        var titleElement = document.createElement('span');
+        titleElement.className = 'custom-map-marker__title';
+        titleElement.textContent = title;
+        container.appendChild(titleElement);
+    }
+
+    if (subtitle) {
+        var subtitleElement = document.createElement('span');
+        subtitleElement.className = 'custom-map-marker__subtitle';
+        subtitleElement.textContent = subtitle;
+        container.appendChild(subtitleElement);
+    }
+
+    return container;
+}
+
 function initMap() {
     var churchLocation = { lat: 42.1509325, lng: 12.1239882 };
     var receptionLocation = { lat: 42.1361, lng: 12.1294 };
@@ -256,8 +277,14 @@ function initMap() {
         map.setZoom(16);
     }
 
-    addMarker(map, churchLocation, { title: "Chiesa di Sant'Egidio Abate" });
-    addMarker(map, receptionLocation, { title: "Casacocò" });
+    addMarker(map, churchLocation, {
+        title: "Chiesa di Sant'Egidio Abate",
+        content: createMarkerContent('Chiesa', "Sant'Egidio Abate", 'marker-church')
+    });
+    addMarker(map, receptionLocation, {
+        title: "Casacocò",
+        content: createMarkerContent('Ricevimento', 'Casacocò', 'marker-reception')
+    });
 }
 
 function initBBSRMap() {
