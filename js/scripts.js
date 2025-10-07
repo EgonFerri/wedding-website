@@ -232,14 +232,49 @@ function loadAdvancedMarkerElement() {
 function addMarker(map, position, markerOptions) {
     return loadAdvancedMarkerElement()
         .then(function (AdvancedMarkerElement) {
-            new AdvancedMarkerElement(Object.assign({
+            var options = Object.assign({
                 map: map,
                 position: position
-            }, markerOptions));
+            }, markerOptions || {});
+
+            var onClick = options.onClick;
+            delete options.onClick;
+
+            var marker = new AdvancedMarkerElement(options);
+
+            if (typeof onClick === 'function') {
+                marker.addListener('click', function (event) {
+                    onClick({
+                        map: map,
+                        marker: marker,
+                        position: position,
+                        event: event
+                    });
+                });
+            }
+
+            return marker;
         })
         .catch(function (error) {
             console.error('Failed to add advanced marker', error);
+            return null;
         });
+}
+
+function openDirections(destination) {
+    if (!destination || typeof destination.lat !== 'number' || typeof destination.lng !== 'number') {
+        return;
+    }
+
+    var coordinates = destination.lat + ',' + destination.lng;
+    var directionsUrl = 'https://www.google.com/maps/dir/?api=1&travelmode=driving&dir_action=navigate&destination=' + encodeURIComponent(coordinates);
+    var newWindow = window.open(directionsUrl, '_blank');
+
+    if (newWindow && typeof newWindow === 'object') {
+        newWindow.opener = null;
+    } else {
+        window.location.assign(directionsUrl);
+    }
 }
 
 function createMarkerContent(title, subtitle, variant) {
@@ -279,11 +314,17 @@ function initMap() {
 
     addMarker(map, churchLocation, {
         title: "Chiesa di Sant'Egidio Abate",
-        content: createMarkerContent('Chiesa', "Sant'Egidio Abate", 'marker-church')
+        content: createMarkerContent('Chiesa', "Sant'Egidio Abate", 'marker-church'),
+        onClick: function () {
+            openDirections(churchLocation);
+        }
     });
     addMarker(map, receptionLocation, {
         title: "Casacocò",
-        content: createMarkerContent('Ricevimento', 'Casacocò', 'marker-reception')
+        content: createMarkerContent('Ricevimento', 'Casacocò', 'marker-reception'),
+        onClick: function () {
+            openDirections(receptionLocation);
+        }
     });
 }
 
