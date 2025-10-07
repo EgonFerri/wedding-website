@@ -188,26 +188,55 @@ $(document).ready(function () {
 /********************** Extras **********************/
 
 // Google map
+function buildMapOptions(center) {
+    var element = document.getElementById('map-canvas');
+    var options = {
+        zoom: 15,
+        center: center,
+        scrollwheel: false
+    };
+
+    var globalMapId = (typeof window !== 'undefined' && window.GOOGLE_MAP_ID) ? window.GOOGLE_MAP_ID : null;
+
+    if (element) {
+        var mapIdFromData = element.dataset ? element.dataset.mapId : element.getAttribute('data-map-id');
+        var mapId = mapIdFromData || globalMapId;
+        if (mapId) {
+            options.mapId = mapId;
+        }
+    } else if (globalMapId) {
+        options.mapId = globalMapId;
+    }
+
+    return options;
+}
+
+function addMarker(map, position) {
+    if (google.maps.marker && google.maps.marker.AdvancedMarkerElement) {
+        new google.maps.marker.AdvancedMarkerElement({
+            map: map,
+            position: position
+        });
+    } else {
+        new google.maps.Marker({
+            map: map,
+            position: position
+        });
+    }
+}
+
 function initMap() {
     var location = { lat: 42.1361, lng: 12.1294 };
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: location,
-        scrollwheel: false
-    });
+    var map = new google.maps.Map(document.getElementById('map-canvas'), buildMapOptions(location));
 
-    new google.maps.Marker({ position: location, map: map });
+    addMarker(map, location);
 }
 
 function initBBSRMap() {
     var la_fiesta = { lat: 20.305826, lng: 85.85480189999998 };
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: la_fiesta,
-        scrollwheel: false
-    });
+    var map = new google.maps.Map(document.getElementById('map-canvas'), buildMapOptions(la_fiesta));
 
-    new google.maps.Marker({ position: la_fiesta, map: map });
+    addMarker(map, la_fiesta);
 }
 
 // alert_markup
