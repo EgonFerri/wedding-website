@@ -128,7 +128,7 @@ $(document).ready(function () {
         if (validHashes.indexOf(inviteHash) === -1) {
             $('#alert-wrapper').html(alert_markup('danger', '<strong>Ops!</strong> Il codice invito non è corretto.'));
         } else {
-            $.post('https://script.google.com/macros/s/AKfycbwolaLmeUORhPHwVQ5w0wqk4Kdhk7st0M11aaUGZeWJGPpfdvVghGWvdIOJPHFKETW1/exec', data)
+            $.post('https://script.google.com/macros/s/AKfycbxc7kLR7GmjPPWNcsI8OuxdOOBEvJMHSiTY3_j5pW4rf9vL_yLPqnJCkGN7WuCbrUQG/exec', data)
                 .done(function (response) {
                     console.log(response);
                     if (response.result === "error") {
