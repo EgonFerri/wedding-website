@@ -243,10 +243,21 @@ function addMarker(map, position, markerOptions) {
 }
 
 function initMap() {
-    var location = { lat: 42.1361, lng: 12.1294 };
-    var map = new google.maps.Map(document.getElementById('map-canvas'), buildMapOptions(location));
+    var churchLocation = { lat: 42.1509325, lng: 12.1239882 };
+    var receptionLocation = { lat: 42.1361, lng: 12.1294 };
+    var map = new google.maps.Map(document.getElementById('map-canvas'), buildMapOptions(receptionLocation));
 
-    addMarker(map, location);
+    var bounds = new google.maps.LatLngBounds();
+    bounds.extend(new google.maps.LatLng(churchLocation.lat, churchLocation.lng));
+    bounds.extend(new google.maps.LatLng(receptionLocation.lat, receptionLocation.lng));
+    map.fitBounds(bounds);
+
+    if (map.getZoom() > 16) {
+        map.setZoom(16);
+    }
+
+    addMarker(map, churchLocation, { title: "Chiesa di Sant'Egidio Abate" });
+    addMarker(map, receptionLocation, { title: "Casacocò" });
 }
 
 function initBBSRMap() {
