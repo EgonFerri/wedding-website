@@ -211,18 +211,35 @@ function buildMapOptions(center) {
     return options;
 }
 
-function addMarker(map, position) {
-    if (google.maps.marker && google.maps.marker.AdvancedMarkerElement) {
-        new google.maps.marker.AdvancedMarkerElement({
-            map: map,
-            position: position
-        });
-    } else {
-        new google.maps.Marker({
-            map: map,
-            position: position
-        });
+var advancedMarkerLoader;
+
+function loadAdvancedMarkerElement() {
+    if (!advancedMarkerLoader) {
+        if (google.maps.marker && google.maps.marker.AdvancedMarkerElement) {
+            advancedMarkerLoader = Promise.resolve(google.maps.marker.AdvancedMarkerElement);
+        } else if (google.maps.importLibrary) {
+            advancedMarkerLoader = google.maps.importLibrary('marker').then(function (markerLib) {
+                return markerLib.AdvancedMarkerElement;
+            });
+        } else {
+            advancedMarkerLoader = Promise.reject(new Error('Advanced Marker library unavailable.'));
+        }
     }
+
+    return advancedMarkerLoader;
+}
+
+function addMarker(map, position, markerOptions) {
+    return loadAdvancedMarkerElement()
+        .then(function (AdvancedMarkerElement) {
+            new AdvancedMarkerElement(Object.assign({
+                map: map,
+                position: position
+            }, markerOptions));
+        })
+        .catch(function (error) {
+            console.error('Failed to add advanced marker', error);
+        });
 }
 
 function initMap() {
