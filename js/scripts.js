@@ -36,27 +36,9 @@ $(document).ready(function () {
     wpAnim('.wp2', 'fadeInRight');
     wpAnim('.wp3', 'fadeInLeft');
     wpAnim('.wp4', 'fadeInRight');
-    wpAnim('.wp5', 'fadeInLeft');
-    wpAnim('.wp6', 'fadeInRight');
     wpAnim('.wp7', 'fadeInUp');
     wpAnim('.wp8', 'fadeInLeft');
     wpAnim('.wp9', 'fadeInRight');
-
-    /***************** Initiate Flexslider ******************/
-    $('.flexslider').flexslider({
-        animation: "slide"
-    });
-
-    /***************** Initiate Fancybox ******************/
-    $('.single_image').fancybox({ padding: 4 });
-    $('.fancybox').fancybox({
-        padding: 4,
-        width: 1000,
-        height: 800
-    });
-
-    /***************** Tooltips ******************/
-    $('[data-toggle="tooltip"]').tooltip();
 
     /***************** Nav Transformicon ******************/
     /* When user clicks the Icon */
@@ -111,26 +93,6 @@ $(document).ready(function () {
             }
         });
     });
-
-    /********************** Social Share buttons ***********************/
-    var share_bar = document.getElementsByClassName('share-bar');
-    var po = document.createElement('script');
-    po.type = 'text/javascript';
-    po.async = true;
-    po.src = 'https://apis.google.com/js/platform.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(po, s);
-
-    for (var i = 0; i < share_bar.length; i++) {
-        var html = '<iframe allowtransparency="true" frameborder="0" scrolling="no"' +
-            'src="https://platform.twitter.com/widgets/tweet_button.html?url=' + encodeURIComponent(window.location) + '&amp;text=' + encodeURIComponent(document.title) + '&amp;hashtags=egonedele&amp;count=horizontal"' +
-            'style="width:105px; height:21px;">' +
-            '</iframe>' +
-            '<iframe src="//www.facebook.com/plugins/like.php?href=' + encodeURIComponent(window.location) + '&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=101094500229731&amp;width=150" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>' +
-            '<div class="g-plusone" data-size="medium"></div>';
-        share_bar[i].innerHTML = html;
-        share_bar[i].style.display = 'inline-block';
-    }
 
     /********************** Embed youtube video *********************/
     $('.player').YTPlayer();
@@ -326,13 +288,6 @@ function initMap() {
             openDirections(receptionLocation);
         }
     });
-}
-
-function initBBSRMap() {
-    var la_fiesta = { lat: 20.305826, lng: 85.85480189999998 };
-    var map = new google.maps.Map(document.getElementById('map-canvas'), buildMapOptions(la_fiesta));
-
-    addMarker(map, la_fiesta);
 }
 
 // alert_markup
