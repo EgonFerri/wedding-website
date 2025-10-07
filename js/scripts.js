@@ -105,11 +105,11 @@ $(document).ready(function () {
             id: ''
         },
         data: {
-            title: "Egon and Ele's Wedding",
-            start: new Date('Nov 27, 2017 10:00'),
-            end: new Date('Nov 29, 2017 00:00'),
-            address: 'ITC Fortune Park Hotel, Kolkata',
-            description: "We can't wait to see you on our big day. For any queries or issues, please contact Mr. Amit Roy at +91 9876543210."
+            title: "Matrimonio di Egon ed Ele",
+            start: new Date('Jun 27, 2026 15:30'),
+            end: new Date('Jun 28, 2026 01:30'),
+            address: "Chiesa di Sant'Egidio Abate, Piazza della Chiesa, Monte Virginio (RM)",
+            description: "Cerimonia alle 15:30 presso la Chiesa di Sant'Egidio Abate a Monte Virginio e festa fino all'1:30."
         }
     });
 
