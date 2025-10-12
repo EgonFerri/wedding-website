@@ -1019,6 +1019,78 @@ body.modal-open {
 /* ==========================================================================
 Picture Section - emulating video section
 ========================================================================== */
+#honeymoon {
+  background: url('../img/figures/honeymoon.jpeg') center center no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  position: relative;
+}
+
+#honeymoon .honeymoon-overlay {
+  align-items: center;
+  background: rgba(17, 17, 17, 0.55);
+  display: flex;
+  justify-content: center;
+  min-height: 420px;
+  padding: 60px 0;
+}
+
+#honeymoon h3 {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+#honeymoon p {
+  color: #f5f5f5;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#honeymoon .honeymoon-details {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+#honeymoon .honeymoon-details .label {
+  margin-right: 10px;
+}
+
+#honeymoon .honeymoon-details .value {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  word-break: break-word;
+}
+
+#honeymoon .honeymoon-details + .honeymoon-details {
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  #honeymoon .honeymoon-overlay {
+    min-height: 360px;
+    padding: 50px 15px;
+  }
+
+  #honeymoon h3 {
+    font-size: 24px;
+  }
+
+  #honeymoon p,
+  #honeymoon .honeymoon-details {
+    font-size: 16px;
+  }
+
+  #honeymoon .honeymoon-details .value {
+    font-size: 18px;
+  }
+}
+
 #picture-section {
   height: 300px;  // Same height as your #video-bg
   margin-top: 50px;  // Adjust as needed to create space from the previous section
