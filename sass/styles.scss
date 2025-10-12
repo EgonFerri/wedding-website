@@ -1086,8 +1086,15 @@ Picture Section - emulating video section
     font-size: 16px;
   }
 
+  #honeymoon .honeymoon-details .label {
+    margin-right: 0;
+    margin-bottom: 2px;
+    display: block;
+  }
+
   #honeymoon .honeymoon-details .value {
     font-size: 18px;
+    display: block;
   }
 }
 
