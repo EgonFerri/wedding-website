@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>
@@ -6,441 +6,619 @@
 <!--[if IE 8]>
 <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<html class="no-js" lang="en">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Egon ed Ele si sposano!</title>
-    <meta name="description" content="Siete invitati al nostro matrimonio!">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#ffffff">
-    <meta property="og:title" content="Egon ed Ele si sposano!">
-    <meta property="og:description" content="Siete invitati al nostro matrimonio!">
-    <meta property="og:image" content="img/main/hero-min.jpg">
-    <meta property="og:type" content="website">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/logos/square/180.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/logos/square/32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/logos/square/16.png">
-    <link rel="manifest" href="manifest.json">
-    <link rel="mask-icon" href="img/logos/square/341.svg" color="#5bbad5">
+    <meta name="description" content="Siete invitati al nostro matrimonio!" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="Egon ed Ele si sposano!" />
+    <meta
+      property="og:description"
+      content="Siete invitati al nostro matrimonio!"
+    />
+    <meta property="og:image" content="img/main/hero-min.jpg" />
+    <meta property="og:type" content="website" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="img/logos/square/180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/logos/square/32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/logos/square/16.png"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="mask-icon" href="img/logos/square/341.svg" color="#5bbad5" />
 
     <script>
-        // load css files from CDN if local node_modules fail
-        function loadCssFromCDN(css) {
-            // create new link tag
-            const link = document.createElement('link');
-            if (css === 'animate.css') {
-                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
-            } else if (css === 'font-awesome.css') {
-                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
-            }
-            link.rel = 'stylesheet';
-
-            // add link tag to head section
-            document.getElementsByTagName('head')[0].appendChild(link);
+      // load css files from CDN if local node_modules fail
+      function loadCssFromCDN(css) {
+        // create new link tag
+        const link = document.createElement("link");
+        if (css === "animate.css") {
+          link.href =
+            "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css";
+        } else if (css === "font-awesome.css") {
+          link.href =
+            "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
         }
+        link.rel = "stylesheet";
 
-        // load js files from CDN if local node_modules fail
-        function loadJsFromCDN(js) {
-            if (js === 'waypoints.js') {
-                document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"><\/script>');
-            } else if (js === 'jquery.js') {
-                document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
-            }
+        // add link tag to head section
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+
+      // load js files from CDN if local node_modules fail
+      function loadJsFromCDN(js) {
+        if (js === "waypoints.js") {
+          document.write(
+            '<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"><\/script>'
+          );
+        } else if (js === "jquery.js") {
+          document.write(
+            '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>'
+          );
         }
+      }
     </script>
 
-    <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.css">
-    <link rel="stylesheet" href="css/styles.min.css">
-    <link rel="stylesheet" href="css/queries.css">
-    <link rel="stylesheet" href="css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
-    <link rel="stylesheet" href="css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
+    <link rel="stylesheet" href="css/normalize.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/jquery.fancybox.css" />
+    <link rel="stylesheet" href="css/styles.min.css" />
+    <link rel="stylesheet" href="css/queries.css" />
+    <link
+      rel="stylesheet"
+      href="css/animate.min.css"
+      onerror="loadCssFromCDN('animate.css')"
+    />
+    <link
+      rel="stylesheet"
+      href="css/font-awesome.min.css"
+      onerror="loadCssFromCDN('font-awesome.css')"
+    />
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-</head>
-<body id="top">
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
-<section class="hero">
-    <section class="navigation">
+  </head>
+  <body id="top">
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience.
+      </p>
+    <![endif]-->
+    <section class="hero">
+      <section class="navigation">
         <header>
-            <div class="header-content">
-                <div class="logo"><a href="#"><img src="img/logos/square/logo.png" alt="Logo"></a></div>
-                <div class="header-nav">
-                    <nav>
-                        <ul class="primary-nav">
-                            <li><a href="#invitation">Ci sposiamo!</a></li>
-                            <li><a href="#events">Eventi</a></li>
-                            <li><a href="#instagram">Album foto</a></li>
-                            <li><a href="#eng-pics">Engagement</a></li>
-                            <li class="hidden-sm hidden-xs"><a href="#video-bg">Location</a></li>
-                        </ul>
-                        <ul class="member-actions">
-                            <li><a href="#map" class="login">Come arrivare</a></li>
-                            <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="navicon">
-                    <a class="nav-toggle" href="#"><span></span></a>
-                </div>
+          <div class="header-content">
+            <div class="logo">
+              <a href="#"><img src="img/logos/square/logo.png" alt="Logo" /></a>
             </div>
+            <div class="header-nav">
+              <nav>
+                <ul class="primary-nav">
+                  <li><a href="#invitation">Ci sposiamo!</a></li>
+                  <li><a href="#events">Eventi</a></li>
+                  <li><a href="#instagram">Album foto</a></li>
+                  <li><a href="#eng-pics">Engagement</a></li>
+                  <li><a href="#honeymoon">Lista nozze</a></li>
+                  <li class="hidden-sm hidden-xs">
+                    <a href="#video-bg">Location</a>
+                  </li>
+                </ul>
+                <ul class="member-actions">
+                  <li><a href="#map" class="login">Come arrivare</a></li>
+                  <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
+                </ul>
+              </nav>
+            </div>
+            <div class="navicon">
+              <a class="nav-toggle" href="#"><span></span></a>
+            </div>
+          </div>
         </header>
+      </section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="hero-content text-center">
+              <img src="img/logos/long/logo_2-lg.png" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 hidden-xs"></div>
+          <div class="col-sm-4 hidden-xs text-center">
+            <a href="#rsvp" class="btn btn-accent btn-large rsvp-btn">RSVP</a>
+          </div>
+          <div class="col-sm-4 hidden-xs"></div>
+        </div>
+      </div>
+      <div class="down-arrow floating-arrow">
+        <a href="#invitation"><i class="fa fa-angle-down"></i></a>
+      </div>
     </section>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="hero-content text-center">
-                    <img src="img/logos/long/logo_2-lg.png">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4 hidden-xs"></div>
-            <div class="col-sm-4 hidden-xs text-center"><a href="#rsvp"
-                                                           class="btn btn-accent btn-large rsvp-btn">RSVP</a></div>
-            <div class="col-sm-4 hidden-xs"></div>
-        </div>
-    </div>
-    <div class="down-arrow floating-arrow"><a href="#invitation"><i class="fa fa-angle-down"></i></a></div>
-</section>
 
-<section id="invitation" class="section-padding">
-    <div class="container">
+    <section id="invitation" class="section-padding">
+      <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <h3>Ci sposiamo!</h3>
-                <p>Vi aspettiamo il <b>27 giugno 2026</b> a <b>Roma</b> per festeggiare con noi!</p>
-            </div>
+          <div class="col-md-12 text-center">
+            <h3>Ci sposiamo!</h3>
+            <p>
+              Vi aspettiamo il <b>27 giugno 2026</b> a <b>Roma</b> per
+              festeggiare con noi!
+            </p>
+          </div>
         </div>
-    </div>
-</section>
-<section id="intro">
-    <div class="container">
+      </div>
+    </section>
+    <section id="intro">
+      <div class="container">
         <div class="row">
-            <div class="col-md-3 hidden-sm hidden-xs"><img src="img/figures/egg_sposo.png" class="wp1"></div>
-            <div class="col-md-6">
-                <p>
-                    All'ennesimo <b>"si sposano tutti tranne me"</b>, Egon ha finalmente deciso di chiedere ad Ele di sposarlo. <br>
-                    Per suggellare la nostra unione eterna, stiamo preparando una serata di festa da condividere con tutte le persone a cui vogliamo bene, e se stai leggendo questo invito probabilmente ne fai parte anche tu!<br>
-                    Ordunque non perdere tempo e confermaci la tua presenza!
-                </p>
-            </div>
-            <div class="col-md-3 hidden-sm hidden-xs"><img src="img/figures/ele_sposa.png" class="wp2"></div>
+          <div class="col-md-3 hidden-sm hidden-xs">
+            <img src="img/figures/egg_sposo.png" class="wp1" />
+          </div>
+          <div class="col-md-6">
+            <p>
+              All'ennesimo <b>"si sposano tutti tranne me"</b>, Egon ha
+              finalmente deciso di chiedere ad Ele di sposarlo. <br />
+              Per suggellare la nostra unione eterna, stiamo preparando una
+              serata di festa da condividere con tutte le persone a cui vogliamo
+              bene, e se stai leggendo questo invito probabilmente ne fai parte
+              anche tu!<br />
+              Ordunque non perdere tempo e confermaci la tua presenza!
+            </p>
+          </div>
+          <div class="col-md-3 hidden-sm hidden-xs">
+            <img src="img/figures/ele_sposa.png" class="wp2" />
+          </div>
         </div>
         <div class="row">
-            <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg"><img src="img/figures/egg_sposo.png" class="wp8"></div>
-            <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg"><img src="img/figures/ele_sposa.png" class="wp9"></div>
+          <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg">
+            <img src="img/figures/egg_sposo.png" class="wp8" />
+          </div>
+          <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg">
+            <img src="img/figures/ele_sposa.png" class="wp9" />
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="events section-padding" id="events">
-    <div class="container">
+    <section class="events section-padding" id="events">
+      <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h3 class="header">Eventi</h3>
-            </div>
+          <div class="col-md-12">
+            <h3 class="header">Eventi</h3>
+          </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
-                <div class="wp3">
-                    <p><strong>27 giugno 2026</strong></p>
+          <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
+            <div class="wp3">
+              <p><strong>27 giugno 2026</strong></p>
 
-                    <h5>Matrimonio religioso <span class="time">15:30</span></h5>
-                    <p>Alle 15:30 ci ritroveremo alla <strong>Chiesa di Sant'Egidio Abate</strong> a MonteVirginio per la cerimonia religiosa, immersi tra il verde e le pietre del borgo. È il nostro posto del cuore e non vediamo l'ora di condividere con voi l'emozione di varcare insieme quella soglia.</p>
-                    <p>La chiesa si trova in <em>Piazza della Chiesa</em> (coordinate 42.1509325, 12.1239882). Se arrivate in auto seguite le indicazioni per MonteVirginio e cercate parcheggio nelle vie limitrofe prima di incamminarvi verso la piazza principale.</p>
-                </div>
+              <h5>Matrimonio religioso <span class="time">15:30</span></h5>
+              <p>
+                Alle 15:30 ci ritroveremo alla
+                <strong>Chiesa di Sant'Egidio Abate</strong> a MonteVirginio per
+                la cerimonia religiosa, immersi tra il verde e le pietre del
+                borgo. È il nostro posto del cuore e non vediamo l'ora di
+                condividere con voi l'emozione di varcare insieme quella soglia.
+              </p>
+              <p>
+                La chiesa si trova in <em>Piazza della Chiesa</em> (coordinate
+                42.1509325, 12.1239882). Se arrivate in auto seguite le
+                indicazioni per MonteVirginio e cercate parcheggio nelle vie
+                limitrofe prima di incamminarvi verso la piazza principale.
+              </p>
             </div>
-            <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
-                <div class="wp4">
-                    <p><strong>27 giugno 2026</strong></p>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
+            <div class="wp4">
+              <p><strong>27 giugno 2026</strong></p>
 
-                    <h5>Ricevimento <span class="time">18:00 - 01:30</span></h5>
-                    <p>Ci ritroveremo a Casacocò dalle 18:00 fino alle 01:30 per festeggiare con un aperitivo in giardino, una cena pensata per coccolarvi e tanta musica. Il parco sarà tutto per noi, con atmosfere soffuse e angoli speciali da scoprire durante la serata.</p>
-                    <p>Portate scarpe comode e tanta voglia di ballare: dopo il taglio della torta accenderemo le luci della pista e resteremo insieme fino a notte inoltrata. Se avete esigenze particolari, fatecelo sapere così potremo accogliervi al meglio.</p>
-                </div>
+              <h5>Ricevimento <span class="time">18:00 - 01:30</span></h5>
+              <p>
+                Ci ritroveremo a Casacocò dalle 18:00 fino alle 01:30 per
+                festeggiare con un aperitivo in giardino, una cena pensata per
+                coccolarvi e tanta musica. Il parco sarà tutto per noi, con
+                atmosfere soffuse e angoli speciali da scoprire durante la
+                serata.
+              </p>
+              <p>
+                Portate scarpe comode e tanta voglia di ballare: dopo il taglio
+                della torta accenderemo le luci della pista e resteremo insieme
+                fino a notte inoltrata. Se avete esigenze particolari, fatecelo
+                sapere così potremo accogliervi al meglio.
+              </p>
             </div>
+          </div>
         </div>
         <div class="row section-padding">
-            <div class="col-md-4 col-md-offset-4 text-center">
-                <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#dc-modal">
-                    <i class="fa fa-barcode"></i>&nbsp;&nbsp;Dress code
-                </a>
-            </div>
+          <div class="col-md-4 col-md-offset-4 text-center">
+            <a
+              class="btn btn-accent btn-small"
+              data-toggle="modal"
+              data-target="#dc-modal"
+            >
+              <i class="fa fa-barcode"></i>&nbsp;&nbsp;Dress code
+            </a>
+          </div>
         </div>
         <!--<div class="row">
             <div class="col-xs-12 section-border section-padding">
             </div>
         </div>-->
-    </div>
+      </div>
 
-    <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog">
+      <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
-                    </button>
-                    <h3 class="text-center section-padding">Come vestirsi</h3>
-                    <p>
-                        Abbiamo scelto un dress code super rilassato: <strong>come vi pare</strong>. Vestitevi come vi sentite meglio, che sia un abito elegante, un outfit colorato o qualcosa di più casual.
-                    </p>
-                    <p>
-                        C'è solo una piccola richiesta per gli uomini: indossate un papillon, del colore che preferite. Sarà il nostro unico filo conduttore per foto divertenti e coordinate.
-                    </p>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-</section>
-
-<section id="instagram" class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h3>Aiutaci a costruire ricordi indelebili!</h3>
-                <p>Aggiungi le tue foto all'<a href="https://photos.app.goo.gl/XoYr9u5dWAHr2b9C8" target="_blank">album condiviso su google foto</a>
-                </p>
+          <div class="modal-content">
+            <div class="modal-body">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span>&times;</span>
+              </button>
+              <h3 class="text-center section-padding">Come vestirsi</h3>
+              <p>
+                Abbiamo scelto un dress code super rilassato:
+                <strong>come vi pare</strong>. Vestitevi come vi sentite meglio,
+                che sia un abito elegante, un outfit colorato o qualcosa di più
+                casual.
+              </p>
+              <p>
+                C'è solo una piccola richiesta per gli uomini: indossate un
+                papillon, del colore che preferite. Sarà il nostro unico filo
+                conduttore per foto divertenti e coordinate.
+              </p>
             </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+    </section>
+
+    <section id="instagram" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h3>Aiutaci a costruire ricordi indelebili!</h3>
+            <p>
+              Aggiungi le tue foto all'<a
+                href="https://photos.app.goo.gl/XoYr9u5dWAHr2b9C8"
+                target="_blank"
+                >album condiviso su google foto</a
+              >
+            </p>
+          </div>
         </div>
         <div class="row section-border wp7">
-            <div class="col-md-4 col-md-offset-4">
-                <img src="img/main/google_photos.png">
-            </div>
+          <div class="col-md-4 col-md-offset-4">
+            <img src="img/main/google_photos.png" />
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section id="video-bg" class="hidden-sm hidden-xs">
-    <div id="bgndVideo" class="player"
-         data-property="{videoURL:'WQtWZZyqHIA',containment:'#video-bg',autoPlay:true,mute:true,showControls:false,startAt:80,stopAt:259,opacity:1}">
-    </div>
-    <div id="video-content">
+    <section id="video-bg" class="hidden-sm hidden-xs">
+      <div
+        id="bgndVideo"
+        class="player"
+        data-property="{videoURL:'WQtWZZyqHIA',containment:'#video-bg',autoPlay:true,mute:true,showControls:false,startAt:80,stopAt:259,opacity:1}"
+      ></div>
+      <div id="video-content">
         <h5>Manziana</h5>
-    </div>
-</section>
+      </div>
+    </section>
 
-
-<section id="map" class="section-padding">
-    <div class="text-center">
+    <section id="map" class="section-padding">
+      <div class="text-center">
         <h3>Come arrivare?</h3>
         <p>Un'oretta da Roma attraverso la cassia o la braccianense</p>
-    </div>
-    <div id="map-canvas" data-map-id="50f7bb11690093b5afd1fd94"></div>
-</section>
+      </div>
+      <div id="map-canvas" data-map-id="50f7bb11690093b5afd1fd94"></div>
+    </section>
 
-<section id="picture-section">
-    <div class="overlay-text">
+    <section id="picture-section">
+      <div class="overlay-text">
         <h5>CASA COCÒ</h5>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="rsvp text-center" id="rsvp">
-    <!-- Modal for confirmation -->
-    <div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
+    <section class="rsvp text-center" id="rsvp">
+      <!-- Modal for confirmation -->
+      <div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span>&times;</span>
-                    </button>
-                    <div class="section-padding">
-                        <h3>Grazie!</h3>
-                        <p>Che gioia sapere che sarai con noi nel nostro grande giorno.</p>
-                        <div id="add-to-cal"></div>
-                    </div>
-                </div>
+          <div class="modal-content">
+            <div class="modal-body">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span>&times;</span>
+              </button>
+              <div class="section-padding">
+                <h3>Grazie!</h3>
+                <p>
+                  Che gioia sapere che sarai con noi nel nostro grande giorno.
+                </p>
+                <div id="add-to-cal"></div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <!-- RSVP Form -->
-    <div class="container">
+      </div>
+      <!-- RSVP Form -->
+      <div class="container">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <h3>Conferma la tua presenza</h3>
-                <p>Compila il modulo per dirci se verrai e segnalarci eventuali esigenze alimentari.</p>
-                <form id="rsvp-form" class="rsvp-form" action="" method="POST">
-                    <!-- Your Details -->
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-user"></i>
-                                <input type="text" name="your_name" placeholder="Il tuo nome" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-cutlery"></i>
-                                <select name="your_food_pref" required>
-                                    <option value="">Cosa mangi</option>
-                                    <option value="omnivore">Onnivoro</option>
-                                    <option value="vegan">Vegano</option>
-                                    <option value="vegetarian">Vegetariano</option>
-                                    <option value="celiac">Celiaco</option>
-                                    <option value="no dairy">Senza lattosio</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Partner Details -->
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-heart"></i>
-                                <input type="text" name="partner_name" placeholder="Il tuo partner">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-cutlery"></i>
-                                <select name="partner_food_pref">
-                                    <option value="">Cosa mangia</option>
-                                    <option value="omnivore">Onnivoro</option>
-                                    <option value="vegan">Vegano</option>
-                                    <option value="vegetarian">Vegetariano</option>
-                                    <option value="celiac">Celiaco</option>
-                                    <option value="no dairy">Senza lattosio</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Kids Details -->
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-child"></i>
-                                <input type="number" name="num_kids" placeholder="Bambini (<10 anni)" min="0">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-cutlery"></i>
-                                <select name="kids_food_pref">
-                                    <option value="">Cosa mangiano</option>
-                                    <option value="omnivore">Onnivoro</option>
-                                    <option value="vegan">Vegano</option>
-                                    <option value="vegetarian">Vegetariano</option>
-                                    <option value="celiac">Celiaco</option>
-                                    <option value="no dairy">Senza lattosio</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Teens Details -->
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-users"></i>
-                                <input type="number" name="num_teens" placeholder="Ragazzi (>10 anni)" min="0">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-cutlery"></i>
-                                <select name="teens_food_pref">
-                                    <option value="">Cosa mangiano</option>
-                                    <option value="omnivore">Onnivoro</option>
-                                    <option value="vegan">Vegano</option>
-                                    <option value="vegetarian">Vegetariano</option>
-                                    <option value="celiac">Celiaco</option>
-                                    <option value="no dairy">Senza lattosio</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Email & Code -->
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-envelope"></i>
-                                <input type="email" name="email" placeholder="La tua email" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-key"></i>
-                                <input type="text" name="invite_code" id="invite_code" placeholder="Codice invito" required>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Alert Area -->
-                    <div class="row">
-                        <div class="col-md-12" id="alert-wrapper"></div>
-                    </div>
-                    <button class="btn-fill rsvp-btn" type="submit">Invia conferma</button>
-                </form>
-            </div>
+          <div class="col-md-6 col-md-offset-3">
+            <h3>Conferma la tua presenza</h3>
+            <p>
+              Compila il modulo per dirci se verrai e segnalarci eventuali
+              esigenze alimentari.
+            </p>
+            <form id="rsvp-form" class="rsvp-form" action="" method="POST">
+              <!-- Your Details -->
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-input-group">
+                    <i class="fa fa-user"></i>
+                    <input
+                      type="text"
+                      name="your_name"
+                      placeholder="Il tuo nome"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-input-group">
+                    <i class="fa fa-cutlery"></i>
+                    <select name="your_food_pref" required>
+                      <option value="">Cosa mangi</option>
+                      <option value="omnivore">Onnivoro</option>
+                      <option value="vegan">Vegano</option>
+                      <option value="vegetarian">Vegetariano</option>
+                      <option value="celiac">Celiaco</option>
+                      <option value="no dairy">Senza lattosio</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- Partner Details -->
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-input-group">
+                    <i class="fa fa-heart"></i>
+                    <input
+                      type="text"
+                      name="partner_name"
+                      placeholder="Il tuo partner"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-input-group">
+                    <i class="fa fa-cutlery"></i>
+                    <select name="partner_food_pref">
+                      <option value="">Cosa mangia</option>
+                      <option value="omnivore">Onnivoro</option>
+                      <option value="vegan">Vegano</option>
+                      <option value="vegetarian">Vegetariano</option>
+                      <option value="celiac">Celiaco</option>
+                      <option value="no dairy">Senza lattosio</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- Kids Details -->
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-input-group">
+                    <i class="fa fa-child"></i>
+                    <input
+                      type="number"
+                      name="num_kids"
+                      placeholder="Bambini (<10 anni)"
+                      min="0"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-input-group">
+                    <i class="fa fa-cutlery"></i>
+                    <select name="kids_food_pref">
+                      <option value="">Cosa mangiano</option>
+                      <option value="omnivore">Onnivoro</option>
+                      <option value="vegan">Vegano</option>
+                      <option value="vegetarian">Vegetariano</option>
+                      <option value="celiac">Celiaco</option>
+                      <option value="no dairy">Senza lattosio</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- Teens Details -->
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-input-group">
+                    <i class="fa fa-users"></i>
+                    <input
+                      type="number"
+                      name="num_teens"
+                      placeholder="Ragazzi (>10 anni)"
+                      min="0"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-input-group">
+                    <i class="fa fa-cutlery"></i>
+                    <select name="teens_food_pref">
+                      <option value="">Cosa mangiano</option>
+                      <option value="omnivore">Onnivoro</option>
+                      <option value="vegan">Vegano</option>
+                      <option value="vegetarian">Vegetariano</option>
+                      <option value="celiac">Celiaco</option>
+                      <option value="no dairy">Senza lattosio</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- Email & Code -->
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-input-group">
+                    <i class="fa fa-envelope"></i>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="La tua email"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-input-group">
+                    <i class="fa fa-key"></i>
+                    <input
+                      type="text"
+                      name="invite_code"
+                      id="invite_code"
+                      placeholder="Codice invito"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- Alert Area -->
+              <div class="row">
+                <div class="col-md-12" id="alert-wrapper"></div>
+              </div>
+              <button class="btn-fill rsvp-btn" type="submit">
+                Invia conferma
+              </button>
+            </form>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section id="honeymoon" class="honeymoon-banner">
-    <div class="honeymoon-overlay">
+    <section id="honeymoon" class="honeymoon-banner">
+      <div class="honeymoon-overlay">
         <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center">
-                    <h3>Il dono più prezioso è la vostra presenza</h3>
-                    <p>Ma se gradite farci un regalo ci piacerebbe che contribuiste al nostro viaggio di nozze.</p>
-                    <p class="honeymoon-details"><span class="label">Intestatario:</span><span class="value">Egon Ferri</span></p>
-                    <p class="honeymoon-details"><span class="label">IBAN:</span><span class="value">IT89L0357601601010006305134</span></p>
-                    <p class="honeymoon-details"><span class="label">Causale:</span><span class="value">regalo viaggio di nozze</span></p>
-                </div>
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+              <h3>Il dono più prezioso è la vostra presenza</h3>
+              <p>
+                Ma se gradite farci un regalo ci piacerebbe che contribuiste al
+                nostro viaggio di nozze.
+              </p>
+              <p class="honeymoon-details">
+                <span class="label">Intestatario:</span
+                ><span class="value">Egon Ferri</span>
+              </p>
+              <p class="honeymoon-details">
+                <span class="label">IBAN:</span
+                ><span class="value">IT89L0357601601010006305134</span>
+              </p>
+              <p class="honeymoon-details">
+                <span class="label">Causale:</span
+                ><span class="value">regalo viaggio di nozze</span>
+              </p>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section id="eng-pics" class="section-padding">
-    <div class="container-fluid">
+    <section id="eng-pics" class="section-padding">
+      <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <h3 class="header">Il giorno della proposta</h3>
-            </div>
+          <div class="col-md-12 text-center">
+            <h3 class="header">Il giorno della proposta</h3>
+          </div>
         </div>
         <div class="row" id="eng-pics-gallery">
-            <!-- Images will be loaded dynamically here -->
+          <!-- Images will be loaded dynamically here -->
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<footer>
-    <div class="container">
+    <footer>
+      <div class="container">
         <div class="row">
-            <div class="col-sm-12 text-center content">
-                <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
-                <p>Crafted by Egon <span class="fa fa-heart pulse2"></span> for Ele</p>
-            </div>
+          <div class="col-sm-12 text-center content">
+            <span class="to-top-wrapper"
+              ><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a
+            ></span>
+            <p>
+              Crafted by Egon <span class="fa fa-heart pulse2"></span> for Ele
+            </p>
+          </div>
         </div>
-    </div>
-</footer>
-<script src="js/vendor/jquery-1.11.2.min.js" onerror="loadJsFromCDN('jquery.js')"></script>
-<script src="js/vendor/jquery.waypoints.min.js" onerror="loadJsFromCDN('waypoints.js')"></script>
-<script src="js/jquery.fancybox.pack.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
-<script src="js/jquery.mb.YTPlayer.min.js"></script>
-<script src="js/vendor/ouical.js"></script>
-<script src="js/scripts.min.js"></script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBePcyPSjKiWuE9pBX-WavrW_xeYcu8ADM&v=weekly&libraries=marker&callback=initMap"></script>
-<!-- Google Analytics -->
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
+      </div>
+    </footer>
+    <script
+      src="js/vendor/jquery-1.11.2.min.js"
+      onerror="loadJsFromCDN('jquery.js')"
+    ></script>
+    <script
+      src="js/vendor/jquery.waypoints.min.js"
+      onerror="loadJsFromCDN('waypoints.js')"
+    ></script>
+    <script src="js/jquery.fancybox.pack.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="js/vendor/ouical.js"></script>
+    <script src="js/scripts.min.js"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBePcyPSjKiWuE9pBX-WavrW_xeYcu8ADM&v=weekly&libraries=marker&callback=initMap"
+    ></script>
+    <!-- Google Analytics -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
         a.async = 1;
         a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-46465113-4', 'auto');
-    ga('send', 'pageview');
-</script>
-</body>
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "https://www.google-analytics.com/analytics.js",
+        "ga"
+      );
+      ga("create", "UA-46465113-4", "auto");
+      ga("send", "pageview");
+    </script>
+  </body>
 </html>
